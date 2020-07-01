@@ -2,6 +2,7 @@ import React, { useState } from 'react'
 import {View , Text, SafeAreaView, TextInput, Dimensions, Alert} from 'react-native'
 import {MyButton} from '../components/MyButton'
 import styles from './styles'
+import auth from '@react-native-firebase/auth';
 
 const SignIn = props => {
 
@@ -14,17 +15,25 @@ const SignIn = props => {
     }
 
     const controlSign = () => {
-        if(password == "" || rePassword == ""){
-            Alert.alert("Şifre kısmı boş girilemez.")
+
+        if(password == "" || rePassword == "" || username == ""){
+            Alert.alert("Kısımlar boş girilemez.")
         }
         else if(password != rePassword){
             Alert.alert("Şifreler uyuşmuyor.")
         }
         else{
-            Alert.alert("Kullanıcı Adı :"+username+" şifre1 :"+password+" şifre2 :"+rePassword)
+            auth().createUserWithEmailAndPassword(username,password)
+            .then(response=>{
+                console.log(response)
+                props.navigation.goBack() 
+            })
+            .catch(error => {
+                console.log(error) 
+            })
         }
     }
-
+ 
      const getUserName = (text) => {
          setUserName(text)
          console.log(username)

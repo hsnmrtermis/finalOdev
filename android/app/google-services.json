@@ -1,0 +1,48 @@
+{
+  "project_info": {
+    "project_number": "340469085593",
+    "firebase_url": "https://finalodevi-82e66.firebaseio.com",
+    "project_id": "finalodevi-82e66",
+    "storage_bucket": "finalodevi-82e66.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:340469085593:android:221077a715c3e683e30f08",
+        "android_client_info": {
+          "package_name": "com.finalodevi"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "340469085593-d95kc2trod8gu6t1jum5a9g9uqna412h.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.finalodevi",
+            "certificate_hash": "5e8f16062ea3cd2c4a0d547876baa6f38cabf625"
+          }
+        },
+        {
+          "client_id": "340469085593-lpm4tbn0a07gugpg1j2jn8r8u6b05n24.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDU_CUPEZh_BHIRvgVTbfq6uPlYiFtHZ3c"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "340469085593-lpm4tbn0a07gugpg1j2jn8r8u6b05n24.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

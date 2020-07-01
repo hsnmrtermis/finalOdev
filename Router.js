@@ -3,7 +3,7 @@ import { View, Text, SafeAreaView } from 'react-native';
 import { NavigationContainer } from '@react-navigation/native';
 import { createStackNavigator } from '@react-navigation/stack';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
-import {Login, SignIn, MainPage, SavedPost} from './src/pages'
+import {Login, SignIn, MainPage, SavedPost, SplashScreen} from './src/pages'
 
 const Stack = createStackNavigator();
 const Tab = createBottomTabNavigator();
@@ -11,7 +11,14 @@ const Tab = createBottomTabNavigator();
 const Router = () => {
     return (
         <NavigationContainer>
-        <Stack.Navigator initialRouteName="LoginPage">
+        <Stack.Navigator initialRouteName="Splash">
+        <Stack.Screen
+                name="Splash"
+                component={SplashScreen}
+                options={{
+                    headerShown:false
+                }}
+            />
             <Stack.Screen
                 name="LoginPage"
                 component={Login}
@@ -22,6 +29,13 @@ const Router = () => {
             <Stack.Screen
                 name="SignInPage"
                 component={SignIn}
+                options={{
+                    headerShown:false
+                }}
+            />
+             <Stack.Screen
+                name="MainPage"
+                component={MainPage}
                 options={{
                     headerShown:false
                 }}
