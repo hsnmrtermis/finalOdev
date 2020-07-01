@@ -21,17 +21,28 @@ const Login = props => {
     const goSignIn = () => {
         props.navigation.navigate('SignInPage')
     }
+    const cleaner = () => {
+        setUserMail("")
+        setUserPassword("")
+    }
 
     const controlLogin = () => {
-        auth().signInWithEmailAndPassword(usermail,userPassword)
+        if(usermail == "" || userPassword == ""){
+            Alert.alert("Kullanıcı maili veya şifre boş bırakılamaz.")
+        }else{
+            auth().signInWithEmailAndPassword(usermail,userPassword)
         .then(response => {
             props.navigation.navigate("MainPage")
             AsyncStorage.setItem('@USER_ID', auth().currentUser.uid)
+            cleaner()
         })
         .catch(error => {
             console.log(error)
             Alert.alert("Giriş Yapılamadı.")
         })
+        }
+
+        
     }
 
 
@@ -49,6 +60,7 @@ const Login = props => {
                       keyboardType="email-address"
                       autoCapitalize="none"
                       onChangeText={getUserMail}
+                      value={usermail}
                       
                       />
                 </View>
@@ -59,6 +71,7 @@ const Login = props => {
                       style={styles.login.input}
                       secureTextEntry
                       onChangeText={getUserPassword}
+                      value={userPassword}
                       />
                 </View>
                 <View style={{ flexDirection: 'row', justifyContent: 'space-between' }}>

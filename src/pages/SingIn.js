@@ -25,6 +25,7 @@ const SignIn = props => {
         else{
             auth().createUserWithEmailAndPassword(username,password)
             .then(response=>{
+                Alert.alert("Kayıt İşlemi Başarılı.")
                 console.log(response)
                 props.navigation.goBack() 
             })
