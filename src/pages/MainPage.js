@@ -33,15 +33,19 @@ const MainPage = props => {
         //console.log("Gelen Mail Adresi :"+mailadresi)
         //console.log("\n Kullanıcı Adı :"+newUserName)
 
+        getPostsRealTime()
+
+    }, [])
+
+    const getPostsRealTime = () => {
         database()
-        .ref()
+        .ref('/post/')
         .on('value', snapshot => {
          console.log(snapshot.val());
          let deneme = Object.values(snapshot.val())
          setPostList(deneme)
-        });
-
-    }, [])
+        })
+    }
     
 
     const getPosts = () => {
