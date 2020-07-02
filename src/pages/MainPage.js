@@ -3,7 +3,7 @@ import {View , Text, SafeAreaView, Button, TextInput, FlatList} from 'react-nati
 import auth from '@react-native-firebase/auth';
 import database from '@react-native-firebase/database';
 import AsyncStorage from '@react-native-community/async-storage';
-
+import {ListItem} from '../components/'
 
 const MainPage = props => {
     let kisiId =  auth().currentUser.uid
@@ -19,14 +19,26 @@ const MainPage = props => {
         var indis = mailadresi.lastIndexOf("@")
         var newUserName = mailadresi.slice(0,indis)
         setUserName(newUserName)
-        getPosts()
+        //getPosts() bunu kullan
+        //getir()
        
 
-                database()
-        .ref(`/${kisiId}/`)
-        .once('value')
-        .then(snapshot => {
-            console.log('Gelen: ', snapshot.val());
+          //      database()
+        //.ref(`/${kisiId}/`)
+        //.once('value')
+        //.then(snapshot => {
+       //     console.log('Gelen: ', snapshot.val());
+       // });
+
+        //console.log("Gelen Mail Adresi :"+mailadresi)
+        //console.log("\n Kullanıcı Adı :"+newUserName)
+
+        database()
+        .ref()
+        .on('value', snapshot => {
+         console.log(snapshot.val());
+         let deneme = Object.values(snapshot.val())
+         setPostList(deneme)
         });
 
     }, [])
@@ -34,13 +46,41 @@ const MainPage = props => {
 
     const getPosts = () => {
         database()
-        .ref()
+        .ref('/post/')
         .once('value')
         .then(snapshot => {
-            console.log('User data: ', snapshot.val());
+            let deneme = Object.values(snapshot.val())
+            setPostList(deneme)
+            //console.log('User data: ', snapshot.val());
 
         });
     }
+
+    const getir = () => {
+        var veriler = database().ref("/post/")
+        veriler.once('value').then(snapshot => {
+            let deneme = Object.values(snapshot.val())
+            setPostList(deneme)
+            //console.log(deneme)
+        
+        })
+    }
+
+    //Burası yapılacak
+  //  const renderPosts = (item) => {
+    //    console.log(item.item.yazi)
+    //    return(
+    //        <ListItem itemMail={item.item.username}  itemData={item.item.yazi} />
+    //    )
+   // }
+   const renderPosts = (item) => {
+   
+    return(
+        <ListItem itemMail="asdasd"  itemData="asdasd" />
+    )
+}
+
+   
 
     const pushData = () => {
         //var indis = mail.lastIndexOf("@")
@@ -54,7 +94,7 @@ const MainPage = props => {
         }
 
                     database()
-                    .ref(`${kisiId}`)
+                    .ref(`/post`)
                     .push(data);
 
                    
@@ -99,6 +139,18 @@ const MainPage = props => {
             onPress={pushData}
             
             />
+            <View style={{alignSelf:'center'}}>
+
+            
+            <FlatList 
+            data={postList}
+            keyExtractor={(_,index) => index.toString()}
+            renderItem={  renderPosts}
+            
+            
+            />
+            </View>
+          
         </View>
         </SafeAreaView>
 
