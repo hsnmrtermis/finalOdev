@@ -4,6 +4,7 @@ import auth from '@react-native-firebase/auth';
 import database from '@react-native-firebase/database';
 import AsyncStorage from '@react-native-community/async-storage';
 
+
 const MainPage = props => {
     let kisiId =  auth().currentUser.uid
     const [mail , setMail] = useState("")
@@ -55,6 +56,8 @@ const MainPage = props => {
                     database()
                     .ref(`${kisiId}`)
                     .push(data);
+
+                   
     }
 
     const changePost = (text) => setYazi(text)
@@ -66,8 +69,6 @@ const MainPage = props => {
         props.navigation.navigate("LoginPage")
     }
    
-
- 
 
     return(
         <SafeAreaView>
@@ -84,13 +85,7 @@ const MainPage = props => {
             
             />
             </View>
-            <FlatList
-            keyExtractor={(_,index)=>index.toString()}
-            data={postList}
-    renderItem={({item}) => <Text>deneme</Text>}
-            
-            
-            />
+          
            
             </View>
             <View>
@@ -110,6 +105,5 @@ const MainPage = props => {
       
         
     )
-}
-
+    }
 export {MainPage}
