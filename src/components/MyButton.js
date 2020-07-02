@@ -12,17 +12,6 @@ const MyButton = props => {
     )
 }
 
-const buttonStyles = StyleSheet.create({
-    btn:{
-        borderColor:'#2ecc71',
-        borderWidth:1,
-        padding:10,
-        marginTop:10
 
-    },
-    label:{
-        textAlign:'center'
-    }
-})
 
 export {MyButton}
