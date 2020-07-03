@@ -1,12 +1,17 @@
 import React from 'react'
-import {View, Text, StyleSheet, Dimensions} from 'react-native'
+import {View, Text, StyleSheet, Dimensions, Button} from 'react-native'
+
 
 const ListItem = props => {
     return(
         <View style={styles.container}>
             <View style={styles.containerRow}>
             <Text style={styles.itemUsername}>{props.itemMail}</Text>
-            <Text style={{borderWidth:1,borderColor:'green',padding:4,borderRadius:4,backgroundColor:'green',color:'white'}}>Kaydet</Text>
+            <Button
+            title="Kaydet"
+            onPress={props.tikla}
+            
+            />
             </View>
             
             <Text style={styles.itemUserText}>{props.itemData}</Text>

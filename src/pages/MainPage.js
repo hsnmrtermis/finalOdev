@@ -1,12 +1,16 @@
-import React, { useState, useEffect } from 'react'
-import { View, SafeAreaView, TextInput, FlatList, Dimensions, Text, Button } from 'react-native'
+import React, { useState, useEffect, useContext } from 'react'
+import { View, SafeAreaView, TextInput, FlatList, Dimensions, Text, Button, Alert } from 'react-native'
 import auth from '@react-native-firebase/auth';
 import database from '@react-native-firebase/database';
 import AsyncStorage from '@react-native-community/async-storage';
 import { ListItem, MyButton } from '../components/'
 import styles from './styles';
+import Context from '../context/store'
 
 const MainPage = props => {
+
+    const {state, dispatch} = useContext(Context)
+    const [kaydedilen,setKaydedilen] = useState([])
     let kisiId = auth().currentUser.uid
     const [mail, setMail] = useState("")
     const [userName, setUserName] = useState("Henüz Çevirilmedi , butona tıkla")
@@ -42,12 +46,29 @@ const MainPage = props => {
         database()
             .ref('/post/')
             .on('value', snapshot => {
-                console.log(snapshot.val());
+                //console.log(snapshot.val());
                 let deneme = Object.values(snapshot.val())
                 setPostList(deneme)
             })
     }
 
+ 
+   function kaydet(item){
+     
+       let dizi = state.savedPost
+       let postum = item.item.yazi
+       let userNamee = item.item.username
+       var bilgi = {
+           yazi:postum,
+           username:userNamee
+       }
+       dizi.push(bilgi)
+       setKaydedilen(dizi)
+
+       dispatch({type:"ADD_SAVED_POST", saveList:kaydedilen})
+     
+   }
+   
 
     const getPosts = () => {
         database()
@@ -78,12 +99,20 @@ const MainPage = props => {
     //        <ListItem itemMail={item.item.username}  itemData={item.item.yazi} />
     //    )
     // }
-    const renderPosts = (item) => {
+   // const renderPosts = (item) => {
         //console.log(item.item.yazi) Yazıları getiriyor.
+      //  return (
+       //     <ListItem itemMail={item.item.username} tikla={kaydet(item)} itemData={item.item.yazi} />
+       // )
+   // }
+
+    const renderPosts = (item) => {
         return (
-            <ListItem itemMail={item.item.username} itemData={item.item.yazi} />
+            <ListItem itemMail={item.item.username} tikla={() => kaydet(item)} itemData={item.item.yazi} />
         )
     }
+
+
 
 
 

@@ -4,6 +4,7 @@ import { NavigationContainer } from '@react-navigation/native';
 import { createStackNavigator } from '@react-navigation/stack';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import {Login, SignIn, MainPage, SavedPost, SplashScreen, SavedPage} from './src/pages'
+import Provider from './src/context/Provider'
 
 const Stack = createStackNavigator();
 const Tab = createBottomTabNavigator();
