@@ -34,7 +34,8 @@ const styles = {
     }),
     signIn: StyleSheet.create({
         container: {
-            flex: 1, alignItems: 'center', justifyContent: 'center', backgroundColor: '#c23616'
+            flex: 1, alignItems: 'center', justifyContent: 'center', backgroundColor: '#393e46'
+            
         },
         logo: {
             fontSize: 20,
@@ -45,10 +46,10 @@ const styles = {
             width: Dimensions.get('window').width / (10 / 9.5), borderWidth: 1, borderColor: '#f5f6fa', marginTop: 30
         },
         btnContainer:{
-            flexDirection:'row',justifyContent:'space-between',width:Dimensions.get('window').width/(10/9.5)
+            flexDirection:'column',justifyContent:'space-between', 
         },
         btnStyle:{
-            borderWidth:1,borderColor:'#f5f6fa', padding:10, marginTop:10
+            borderWidth:1,borderColor:'#f5f6fa', padding:10, margin:10
         }
     }),
     mainPage:StyleSheet.create({
@@ -60,13 +61,13 @@ const styles = {
 
         },
         containerHeader:{
-            height:Dimensions.get('window').height / (10/0.8),
-            width :Dimensions.get('window').width /1,
+            height:Dimensions.get('window').height / 13,
+            width :Dimensions.get('window').width /1.1,
             borderWidth:1,
             borderColor:'black',
             flexDirection:'row',
             justifyContent:'space-between',
-            padding:10
+            padding:10, margin:20, borderRadius:20, 
 
         },
         containerList:{
@@ -85,18 +86,19 @@ const styles = {
             width:Dimensions.get('window').width / (10/8)
         },
         headerLogOut:{
-            width:Dimensions.get('window').width / (10/2)
-        },
+alignSelf: 'center', marginRight:20, marginLeft:0,         },
         footerInputBtn:{
             flexDirection:'row',
             width:Dimensions.get('window').width/1,
             height:Dimensions.get('window').height/(10/1),
+            justifyContent:'center'
             
            
             
         },
         footerInput:{
             width:Dimensions.get('window').width/(10/8.5),
+            borderRadius:15
         },
         footerAddBtn:{
             height:Dimensions.get('window').height/(10/1.5)
@@ -117,8 +119,7 @@ const styles = {
         },
         addBtn:{
 
-            backgroundColor:'#2ecc71',
-            padding:15,
+            backgroundColor: '#3b6978', borderRadius: 15, padding:15,
             alignItems:'center'
         },
         addBtnTxt:{

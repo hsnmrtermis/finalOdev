@@ -147,70 +147,57 @@ const MainPage = props => {
 
     return (
         <SafeAreaView>
-            <View style={styles.mainPage.containerColumn}>
-                <View style={styles.mainPage.containerHeader}>
-                    <View style={styles.mainPage.headerUserName}>
-                        <Text style={{ fontWeight: 'bold' }}>Kullanıcı Adı :{userName}</Text>
-                    </View>
-                    <View style={styles.mainPage.headerLogOut}>
-                        <Button
-                            title="Çıkış Yap"
-                            onPress={LogOut}
-
-                        />
-                    </View>
+        <View style={styles.mainPage.containerColumn}>
+            <View style={styles.mainPage.containerHeader}>
+                <View style={styles.mainPage.headerUserName}>
+                    <Text style={{ fontWeight: 'bold' }}>Merhaba {userName}!</Text>
                 </View>
-                <View style={styles.mainPage.containerList}>
-                    <FlatList
-                        data={postList}
-                        keyExtractor={(_, index) => index.toString()}
-                        renderItem={renderPosts}
-
-
-                    />
-                </View>
-                <View style={styles.mainPage.containerFooter}>
-
-                    <View style={styles.mainPage.footerInputBtn}>
-                        <View style={styles.mainPage.footerInput}>
-                            <TextInput
-                                onChangeText={changePost}
-                                placeholder="Post Giriniz"
-                                style={{ borderWidth: 1, borderBottomColor: 'black' }}
-
-                            />
-                        </View>
-                        <View style={styles.mainPage.footerAddBtn}>
-
-                            <MyButton
-                                press={pushData}
-                                label="Ekle"
-                                btnStyle={styles.mainPage.addBtn}
-                                labelStyle={styles.mainPage.addBtnTxt}
-
-
-                            />
-                        </View>
-
-                    </View>
-
-
-                </View>
-
-
-
-
-
-
-
-                <View>
-
-
-
+                <View style={styles.mainPage.headerLogOut}>
+                    <TouchableOpacity
+                        style={{ backgroundColor: '#3b6978', borderRadius: 15, padding: 10 }}
+                        onPress={LogOut}
+                    >
+                        <Text style={{ color: 'white' }}>
+                            Çıkış Yap
+                        </Text>
+                    </TouchableOpacity>
 
                 </View>
             </View>
-        </SafeAreaView>
+            <View style={styles.mainPage.containerList}>
+                <FlatList
+                    data={postList}
+                    keyExtractor={(_, index) => index.toString()}
+                    renderItem={renderPosts}
+
+                />
+            </View>
+            <View style={styles.mainPage.containerFooter}>
+
+                <View style={styles.mainPage.footerInputBtn}>
+                    <View style={styles.mainPage.footerInput}>
+                        <TextInput
+                            onChangeText={changePost}
+                            placeholder="Post Giriniz"
+                            style={{ borderWidth: 1, borderBottomColor: 'black' }}
+
+                        />
+                    </View>
+                    <View style={styles.mainPage.footerAddBtn}>
+
+                        <MyButton
+                            press={pushData}
+                            label="Ekle"
+                            btnStyle={styles.mainPage.addBtn}
+                            labelStyle={styles.mainPage.addBtnTxt}
+                        />
+                    </View>
+                </View>
+            </View>
+            <View>
+            </View>
+        </View>
+    </SafeAreaView>
 
 
     )

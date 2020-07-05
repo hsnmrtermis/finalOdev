@@ -53,56 +53,56 @@ const SignIn = props => {
 
     return(
         <SafeAreaView style={styles.signIn.container}>
-            <View>
-                <Text style={styles.signIn.logo}>Sign In</Text>
-            </View>
-            <View>
-                <TextInput 
-                placeholder="Mail Adresiniz"
-                placeholderTextColor="#f5f6fa"
-                style={styles.signIn.input}
-                
-                onChangeText={getUserName}
-                />
-            </View>
-            <View>
-                <TextInput 
-                placeholder="Şifreniz"
-                placeholderTextColor="#f5f6fa"
-                style={styles.signIn.input}
-                onChangeText={getPassword}
-                
-                />
-            </View>
-            <View>
+        <View>
+            <Text style={styles.signIn.logo}>Kayıt Ol</Text>
+        </View>
+        <View>
             <TextInput 
-                placeholder="Şifreniz (Tekrar)"
-                placeholderTextColor="#f5f6fa"
-                style={styles.signIn.input}
-                onChangeText={getRePassword}
+            placeholder="Mail Adresiniz"
+            placeholderTextColor="#f5f6fa"
+            style={styles.signIn.input}
+            
+            onChangeText={getUserName}
+            />
+        </View>
+        <View>
+            <TextInput 
+            placeholder="Şifreniz"
+            placeholderTextColor="#f5f6fa"
+            style={styles.signIn.input}
+            onChangeText={getPassword}
+            
+            />
+        </View>
+        <View>
+        <TextInput 
+            placeholder="Şifreniz (Tekrar)"
+            placeholderTextColor="#f5f6fa"
+            style={styles.signIn.input}
+            onChangeText={getRePassword}
+            
+            />
+        </View>
+        <View style={styles.signIn.btnContainer}>
+            <View>
+                <MyButton
+                btnStyle={styles.signIn.btnStyle}
+                labelStyle={{color:'#f5f6fa'}}
+                label="Kayıt Ol"
+                press={controlSign}
+                />
                 
+            </View>
+            <View>
+            <MyButton
+                btnStyle={styles.signIn.btnStyle}
+                labelStyle={{color:'#f5f6fa'}}
+                label="Giriş Yap Sayfasına Git"
+                press={backLogin}
                 />
             </View>
-            <View style={styles.signIn.btnContainer}>
-                <View>
-                    <MyButton
-                    btnStyle={styles.signIn.btnStyle}
-                    labelStyle={{color:'#f5f6fa'}}
-                    label="Kayıt Ol"
-                    press={controlSign}
-                    />
-                    
-                </View>
-                <View>
-                <MyButton
-                    btnStyle={styles.signIn.btnStyle}
-                    labelStyle={{color:'#f5f6fa'}}
-                    label="Giriş Yap Sayfasına Git"
-                    press={backLogin}
-                    />
-                </View>
-            </View>
-        </SafeAreaView>
+        </View>
+    </SafeAreaView>
     )
 }
 
