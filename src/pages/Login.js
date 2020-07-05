@@ -47,10 +47,10 @@ const Login = props => {
 
 
     return (
-        <SafeAreaView style={{ flex: 1, alignItems: 'center', backgroundColor: '#9c88ff' }}>
+        <SafeAreaView style={{ flex: 1, alignItems: 'center', backgroundColor: '#393e46' }}>
             <View style={{ flex: 1, justifyContent: 'center' }}>
                 <View style={{ alignItems: 'center' }}>
-                    <Text style={{ fontStyle: 'italic', fontWeight: 'bold', fontSize: 20 }}>Login</Text>
+                <Text style={{ fontWeight: 'bold', fontSize: 20, color:'white' }}>Oturum Aç</Text>
                 </View>
                 <View style={styles.login.contaierInput}>
                     <TextInput 
@@ -74,12 +74,13 @@ const Login = props => {
                       value={userPassword}
                       />
                 </View>
-                <View style={{ flexDirection: 'row', justifyContent: 'space-between' }}>
+                <View style={{justifyContent:'center', alignItems:'center'}}>
                     <View style={{ width: Dimensions.get('window').width / 2.5 }}>
-                        <MyButton press={goSignIn} btnStyle={styles.login.btn} labelStyle={styles.login.btnText} label="Kayıt Ol" />
+                        <MyButton press={goSignIn} btnStyle={styles.login.btn} labelStyle={styles.login.btnText} label="Giriş Yap" />
                     </View>
+                    <Text style={{color:'white', marginTop:50}}>Hesabınız yok mu?</Text>
                     <View style={{ width: Dimensions.get('window').width / 2.5 }}>
-                        <MyButton press={controlLogin} btnStyle={styles.login.btn} labelStyle={styles.login.btnText} label="Giriş Yap" />
+                        <MyButton press={controlLogin} btnStyle={styles.login.btn} labelStyle={styles.login.btnText} label="Kayıt Olun" />
                     </View>
                 </View>
 
