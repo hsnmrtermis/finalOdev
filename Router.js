@@ -1,81 +1,87 @@
-import * as React from 'react';
+import 'react-native-gesture-handler';
+import React from 'react';
 import { View, Text, SafeAreaView } from 'react-native';
 import { NavigationContainer } from '@react-navigation/native';
 import { createStackNavigator } from '@react-navigation/stack';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
-import {Login, SignIn, MainPage, SavedPost, SplashScreen, SavedPage} from './src/pages'
+import { Login, SignIn, MainPage, SavedPost, SplashScreen } from './src/pages'
 import Provider from './src/context/Provider'
 
 const Stack = createStackNavigator();
 const Tab = createBottomTabNavigator();
 
-const Router = () => {
+const Main = () => {
     return (
-        <NavigationContainer>
-        <Stack.Navigator initialRouteName="Splash">
-        <Stack.Screen
-                name="Splash"
-                component={SplashScreen}
-                options={{
-                    headerShown:false
-                }}
-            />
-            <Stack.Screen
-                name="LoginPage"
-                component={Login}
-                options={{
-                    headerShown:false
-                }}
-            />
-            <Stack.Screen
-                name="SignInPage"
-                component={SignIn}
-                options={{
-                    headerShown:false
-                }}
-            />
-             <Stack.Screen
-                name="MainPage"
-                component={MainPage}
-                options={{
-                    headerShown:false
-                }}
-            />
-             <Stack.Screen
-                name="SavedPage"
-                component={SavedPage}
-                options={{
-                    headerShown:false
-                }}
-            />
-        </Stack.Navigator>
-        </NavigationContainer>
+        <Provider>
+            <NavigationContainer>
+                <Stack.Navigator initialRouteName="Splash">
+                    <Stack.Screen
+                        name="Splash"
+                        component={SplashScreen}
+                        options={{
+                            headerShown: false
+                        }}
+                    />
+                    <Stack.Screen
+                        name="Login"
+                        component={Login}
+                        options={{
+                            headerShown: false
+                        }}
+                    />
+                    <Stack.Screen
+                        name="SignInPage"
+                        component={SignIn}
+                        options={{
+                            headerShown: false
+                        }}
+                    />
+                    <Stack.Screen
+                        name="MainPage"
+                        component={MainPage}
+                        options={{
+                            headerShown: false
+                        }}
+                    />
+                      <Stack.Screen
+                        name="SavedPage"
+                        component={SavedPost}
+                        options={{
+                            title: "Kayıtlılar"
+                        }}
+                    />
+                </Stack.Navigator>
+            </NavigationContainer>
+        </Provider>
     )
 }
 
-const Main = () => {
+const Router = () => {
     return (
-        <NavigationContainer>
-            <Tab.Navigator >
+        <Provider>
 
-                <Tab.Screen
-                    name="MainPage"
-                    component={MainPage}
-                    options={{
-                        title: "Postlar MainPage"
-                    }}
-                />
+            <NavigationContainer>
+                <Tab.Navigator >
 
-                <Tab.Screen
-                    name="SavedPage"
-                    component={SavedPost}
-                    options={{
-                        title: "SavedPage"
-                    }}
-                />
+                    <Tab.Screen
+                        name="MainPage"
+                        component={MainPage}
+                        options={{
+                            title: "Postlar"
+                        }}
+                    />
 
-            </Tab.Navigator>
-        </NavigationContainer>
+                    <Tab.Screen
+                        name="SavedPage"
+                        component={SavedPost}
+                        options={{
+                            title: "Kayıtlılar"
+                        }}
+                    />
+
+                </Tab.Navigator>
+            </NavigationContainer>
+        </Provider>
     );
 }
 

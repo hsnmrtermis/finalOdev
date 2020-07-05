@@ -9,8 +9,8 @@ import Context from '../context/store'
 
 const MainPage = props => {
 
-    const {state, dispatch} = useContext(Context)
-    const [kaydedilen,setKaydedilen] = useState([])
+    const { state, dispatch } = useContext(Context)
+    const [kaydedilen, setKaydedilen] = useState([])
     let kisiId = auth().currentUser.uid
     const [mail, setMail] = useState("")
     const [userName, setUserName] = useState("Henüz Çevirilmedi , butona tıkla")
@@ -52,23 +52,24 @@ const MainPage = props => {
             })
     }
 
- 
-   function kaydet(item){
-     
-       let dizi = state.savedPost
-       let postum = item.item.yazi
-       let userNamee = item.item.username
-       var bilgi = {
-           yazi:postum,
-           username:userNamee
-       }
-       dizi.push(bilgi)
-       setKaydedilen(dizi)
 
-       dispatch({type:"ADD_SAVED_POST", saveList:kaydedilen})
-     
-   }
-   
+    function kaydet(item) {
+
+        let dizi = state.savedPost
+        let postum = item.item.yazi
+        let userNamee = item.item.username
+        var bilgi = {
+            yazi: postum,
+            username: userNamee
+        }
+        dizi.push(bilgi)
+       setKaydedilen(dizi)
+        console.log(state.savedPost)
+
+        dispatch({ type: "ADD_SAVED_POST", saveList: dizi })
+
+    }
+
 
     const getPosts = () => {
         database()
@@ -99,12 +100,12 @@ const MainPage = props => {
     //        <ListItem itemMail={item.item.username}  itemData={item.item.yazi} />
     //    )
     // }
-   // const renderPosts = (item) => {
-        //console.log(item.item.yazi) Yazıları getiriyor.
-      //  return (
-       //     <ListItem itemMail={item.item.username} tikla={kaydet(item)} itemData={item.item.yazi} />
-       // )
-   // }
+    // const renderPosts = (item) => {
+    //console.log(item.item.yazi) Yazıları getiriyor.
+    //  return (
+    //     <ListItem itemMail={item.item.username} tikla={kaydet(item)} itemData={item.item.yazi} />
+    // )
+    // }
 
     const renderPosts = (item) => {
         return (
@@ -152,7 +153,7 @@ const MainPage = props => {
                         <Text style={{ fontWeight: 'bold' }}>Kullanıcı Adı :{userName}</Text>
                     </View>
                     <View style={styles.mainPage.headerLogOut}>
-                    <Button
+                        <Button
                             title="Çıkış Yap"
                             onPress={LogOut}
 
@@ -160,7 +161,7 @@ const MainPage = props => {
                     </View>
                 </View>
                 <View style={styles.mainPage.containerList}>
-                <FlatList
+                    <FlatList
                         data={postList}
                         keyExtractor={(_, index) => index.toString()}
                         renderItem={renderPosts}
@@ -169,65 +170,42 @@ const MainPage = props => {
                     />
                 </View>
                 <View style={styles.mainPage.containerFooter}>
-               
+
                     <View style={styles.mainPage.footerInputBtn}>
                         <View style={styles.mainPage.footerInput}>
-                        <TextInput
-                        onChangeText={changePost}
-                        placeholder="Post Giriniz"
-                        style={{borderWidth:1,borderBottomColor:'black'}}
+                            <TextInput
+                                onChangeText={changePost}
+                                placeholder="Post Giriniz"
+                                style={{ borderWidth: 1, borderBottomColor: 'black' }}
 
-                    />
+                            />
                         </View>
                         <View style={styles.mainPage.footerAddBtn}>
-                       
-                    <MyButton 
-                    press={pushData}
-                    label="Ekle"
-                    btnStyle={styles.mainPage.addBtn}
-                    labelStyle={styles.mainPage.addBtnTxt}
-                    
-                    
-                    />
+
+                            <MyButton
+                                press={pushData}
+                                label="Ekle"
+                                btnStyle={styles.mainPage.addBtn}
+                                labelStyle={styles.mainPage.addBtnTxt}
+
+
+                            />
                         </View>
 
                     </View>
-                   
-                    <View style={styles.mainPage.footerNavigation}>
-                        <View style={styles.mainPage.footerBtnNavigation}>
-                        <MyButton 
-                    press={pushData}
-                    label="Posts Page"
-                    btnStyle={styles.mainPage.footerNavigationBtnActive}
-                    labelStyle={styles.mainPage.addBtnTxt}
-                    
-                    
-                    />
-                        </View>
-                        <View style={styles.mainPage.footerBtnNavigation}>
-                        <MyButton 
-                    press={pushData}
-                    label="Saved Post Page"
-                    btnStyle={styles.mainPage.footerNavigationBtnActive}
-                    labelStyle={styles.mainPage.addBtnTxt}
-                    
-                    
-                    />
-                   
-                        </View>
-                       
-                    </View>
+
+
                 </View>
-                
-                
-                  
-                    
 
-                        
+
+
+
+
+
 
                 <View>
-                   
-                   
+
+
 
 
                 </View>
